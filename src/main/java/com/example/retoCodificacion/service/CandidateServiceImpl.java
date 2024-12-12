@@ -5,6 +5,7 @@ import com.example.retoCodificacion.domain.Candidate;
 import com.example.retoCodificacion.exceptions.CandidateNotFoundException;
 import com.example.retoCodificacion.repository.CandidateRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
 
+    @Autowired
     public CandidateServiceImpl(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
     }
@@ -23,7 +25,6 @@ public class CandidateServiceImpl implements CandidateService {
     public Candidate createCandidate(Candidate candidate) {
         return candidateRepository.save(candidate);
     }
-
 
 
     @Override
@@ -35,6 +36,7 @@ public class CandidateServiceImpl implements CandidateService {
     public Optional<Candidate> getCandidateById(Long id) {
         return candidateRepository.findById(id);
     }
+
     @Override
     public Optional<Candidate> updateCandidate(Long id, Candidate candidate) {
         // Buscar el candidato por ID y lanzar una excepción si no existe
