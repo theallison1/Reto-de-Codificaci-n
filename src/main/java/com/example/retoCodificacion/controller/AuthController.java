@@ -1,36 +1,28 @@
 package com.example.retoCodificacion.controller;
 
-import com.example.retoCodificacion.security.JwtUtil;
+import com.example.retoCodificacion.model.AuthRequestDto;
+import com.example.retoCodificacion.service.AuthService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/auth/v1")
+@Slf4j
+@RequiredArgsConstructor
 public class AuthController {
 
-    private final JwtUtil jwtUtil;
-    private final AuthenticationManager authenticationManager;
-
-    @Autowired
-    public AuthController(JwtUtil jwtUtil, AuthenticationManager authenticationManager) {
-        this.jwtUtil = jwtUtil;
-        this.authenticationManager = authenticationManager;
-    }
-
+    private final AuthService authService;
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        // Validación de credenciales
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(username, password)
-        );
-
-        // Si las credenciales son correctas, generar el token JWT
-        if (authentication.isAuthenticated()) {
-            return jwtUtil.generateToken(username);
-        }
-        return "Invalid credentials";  // Deberías manejar mejor este caso
+    public ResponseEntity<Map<String, String>> authRequest(@RequestBody AuthRequestDto authRequestDto) {
+        log.info("AuthResource.authRequest start {}", authRequestDto);
+        var userRegistrationResponse = authService.authRequest(authRequestDto);
+        log.info("AuthResource.authRequest end {}", userRegistrationResponse);
+        return new ResponseEntity<>(userRegistrationResponse, HttpStatus.OK);
     }
 }

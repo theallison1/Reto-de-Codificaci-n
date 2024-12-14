@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version> <!-- Actualiza a la versión más reciente de Spring Boot 3.x -->
+		<version>3.1.2</version> <!-- Actualiza a la versión más reciente de Spring Boot 3.x -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -18,6 +18,7 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<org.springdoc.version>2.1.0</org.springdoc.version>
 	</properties>
 
 	<dependencies>
@@ -108,11 +109,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Dependencia para OpenAPI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.14</version>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${org.springdoc.version}</version>
 		</dependency>
 	</dependencies>
 
