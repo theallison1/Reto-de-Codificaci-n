@@ -1,17 +1,21 @@
-# Usamos la imagen base de OpenJDK 17
-FROM openjdk:17-jdk-slim
+FROM maven:3.8.6-openjdk-17-slim AS build
 
-# Establecemos el directorio de trabajo
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copiamos el archivo JAR generado a la imagen
-COPY target/retoCodificacion-0.0.1-SNAPSHOT.jar app.jar
+# Copia el código fuente de la aplicación
+COPY . .
 
-# Exponemos el puerto en el que la aplicación escuchará
+# Ejecuta el comando de Maven para construir el JAR
+RUN mvn clean install -DskipTests
+
+# Ahora copia el JAR generado
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/retoCodificacion-0.0.1-SNAPSHOT.jar app.jar
+
+# Exponer el puerto
 EXPOSE 8080
 
-# Cargar variables de entorno desde .env si es necesario
-COPY .env .env
-
-# Comando para ejecutar la aplicación cuando el contenedor se inicie
+# Comando para ejecutar el JAR
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
