@@ -134,14 +134,24 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+
+			<!-- Agregar el Spring Boot Maven Plugin para configurar la clase principal en el JAR -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.example.retoCodificacion.RetoCodificacionApplication</mainClass> <!-- Cambia esto a la clase principal de tu proyecto -->
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>9.16.3</version>
 				<configuration>
 					<url>jdbc:mysql://localhost:3306/recruitment_db</url>
-					<user>root</user>
-					<password>nueva_contraseña</password>
+					<user>nuevo</user>
+					<password>nnueva_contrase</password>
 				</configuration>
 			</plugin>
 		</plugins>
