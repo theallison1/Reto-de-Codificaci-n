@@ -58,9 +58,10 @@ public class CandidatesController {
     public ResponseEntity<Void> deleteCandidate(@PathVariable Long id) {
         try {
             candidateService.deleteCandidate(id);
-            return ResponseEntity.noContent().build();
-        } catch (CandidateNotFoundException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.noContent().build();  // 204 No Content
+        } catch (CandidateNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // 404 Not Found
         }
     }
+
 }

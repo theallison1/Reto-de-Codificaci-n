@@ -1,5 +1,6 @@
 package com.example.retoCodificacion.service;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 

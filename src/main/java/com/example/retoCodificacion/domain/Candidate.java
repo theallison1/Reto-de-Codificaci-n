@@ -33,4 +33,55 @@ public class Candidate {
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    public Candidate(long l, String janeDoe) {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public @NotNull(message = "El nombre es obligatorio") String getName() {
+        return name;
+    }
+
+    public void setName(@NotNull(message = "El nombre es obligatorio") String name) {
+        this.name = name;
+    }
+
+    public @NotNull(message = "El correo electrónico es obligatorio") String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotNull(message = "El correo electrónico es obligatorio") String email) {
+        this.email = email;
+    }
+
+    public @NotNull(message = "El género es obligatorio") String getGender() {
+        return gender;
+    }
+
+    public void setGender(@NotNull(message = "El género es obligatorio") String gender) {
+        this.gender = gender;
+    }
+
+    public @NotNull(message = "El salario esperado es obligatorio") Double getExpectedSalary() {
+        return expectedSalary;
+    }
+
+    public void setExpectedSalary(@NotNull(message = "El salario esperado es obligatorio") Double expectedSalary) {
+        this.expectedSalary = expectedSalary;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
