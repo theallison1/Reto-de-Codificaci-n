@@ -68,8 +68,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-mysql</artifactId>
+			<artifactId>flyway-core</artifactId>
+			<version>9.16.3</version> <!-- Usa una versión adecuada para tu proyecto -->
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -155,17 +157,17 @@
 				</configuration>
 			</plugin>
 
-			<!-- Flyway para manejar las migraciones de la base de datos -->
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>9.16.3</version>
 				<configuration>
-					<url>jdbc:mysql://localhost:3306/recruitment_db</url> <!-- Cambia esto a tu configuración -->
-					<user>nuevo</user>
-					<password>nnueva_contrase</password>
+					<url>jdbc:postgresql://dpg-ctfvupjgbbvc73dhoi30-a.oregon-postgres.render.com/recruitment_db_vqjr</url> <!-- URL de la base de datos externa -->
+					<user>nuevo</user> <!-- Usuario proporcionado por Render -->
+					<password>0unSZYejogiFa5IT3MHSNpn8ySrVejmi</password> <!-- Contraseña proporcionada por Render -->
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
