@@ -1,9 +1,9 @@
 package com.example.retoCodificacion.controller;
 
-
 import com.example.retoCodificacion.domain.Candidate;
 import com.example.retoCodificacion.exceptions.CandidateNotFoundException;
 import com.example.retoCodificacion.service.CandidateService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/candidates")
 @Validated
+@SecurityRequirement(name = "Bearer")  // Asegúrate de que el nombre coincida con el definido en OpenAPI
 public class CandidatesController {
 
     private final CandidateService candidateService;
@@ -53,15 +54,13 @@ public class CandidatesController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCandidate(@PathVariable Long id) {
         try {
-            candidateService.deleteCandidate(id); // Llama al servicio
-            return ResponseEntity.noContent().build(); // Si la eliminación es exitosa
+            candidateService.deleteCandidate(id);
+            return ResponseEntity.noContent().build();
         } catch (CandidateNotFoundException e) {
-            return ResponseEntity.notFound().build(); // Si el candidato no es encontrado
+            return ResponseEntity.notFound().build();
         }
     }
-
 }
