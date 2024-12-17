@@ -3,6 +3,7 @@ com/example/retoCodificacion/security/SecurityConfig.class
 com/example/retoCodificacion/model/AuthRequestDto.class
 com/example/retoCodificacion/domain/Candidate.class
 com/example/retoCodificacion/service/CandidateService.class
+com/example/retoCodificacion/model/DtoCandidate.class
 com/example/retoCodificacion/controller/CandidatesController.class
 com/example/retoCodificacion/service/AuthServiceImpl.class
 com/example/retoCodificacion/config/SwaggerConfig.class

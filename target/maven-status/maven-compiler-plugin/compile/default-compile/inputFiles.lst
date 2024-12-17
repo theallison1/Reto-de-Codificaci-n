@@ -13,6 +13,7 @@
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/service/AuthServiceImpl.java
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/service/AuthService.java
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/controller/AuthController.java
+/Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/model/DtoCandidate.java
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/service/JwtService.java
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/domain/Candidate.java
 /Users/macbookair/Desktop/retoCodificacion/src/main/java/com/example/retoCodificacion/service/JwtServiceImpl.java
