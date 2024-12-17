@@ -3,11 +3,13 @@ package com.example.retoCodificacion.service;
 
 import com.example.retoCodificacion.domain.Candidate;
 import com.example.retoCodificacion.exceptions.CandidateNotFoundException;
+import com.example.retoCodificacion.model.DtoCandidate;
 import com.example.retoCodificacion.repository.CandidateRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,16 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public Candidate createCandidate(Candidate candidate) {
+    public Candidate createCandidate(DtoCandidate dtoCandidate) {
+        // Convertir el DTO a la entidad Candidate
+        Candidate candidate = new Candidate();
+        candidate.setName(dtoCandidate.getName());
+        candidate.setEmail(dtoCandidate.getEmail());
+        candidate.setGender(dtoCandidate.getGender());
+        candidate.setExpectedSalary(dtoCandidate.getExpectedSalary());
+        candidate.setCreatedAt(LocalDateTime.now());  // Asigna el timestamp actual
+
+
         return candidateRepository.save(candidate);
     }
 

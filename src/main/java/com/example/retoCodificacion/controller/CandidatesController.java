@@ -2,6 +2,7 @@ package com.example.retoCodificacion.controller;
 
 import com.example.retoCodificacion.domain.Candidate;
 import com.example.retoCodificacion.exceptions.CandidateNotFoundException;
+import com.example.retoCodificacion.model.DtoCandidate;
 import com.example.retoCodificacion.service.CandidateService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -40,11 +41,10 @@ public class CandidatesController {
         return candidate.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Crear un nuevo candidato
     @PostMapping
-    public ResponseEntity<Candidate> createCandidate(@RequestBody @Valid Candidate candidate) {
-        Candidate createdCandidate = candidateService.createCandidate(candidate);
-        return new ResponseEntity<>(createdCandidate, HttpStatus.CREATED);
+    public ResponseEntity<Candidate> createCandidate(@RequestBody DtoCandidate dtoCandidate) {
+        Candidate createdCandidate = candidateService.createCandidate(dtoCandidate);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCandidate);
     }
 
     @PutMapping("/{id}")

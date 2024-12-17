@@ -2,12 +2,13 @@ package com.example.retoCodificacion.service;
 
 
 import com.example.retoCodificacion.domain.Candidate;
+import com.example.retoCodificacion.model.DtoCandidate;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CandidateService {
-    Candidate createCandidate(Candidate candidate);
+    Candidate createCandidate(DtoCandidate dtoCandidate);
 
     List<Candidate> getAllCandidates();
 
