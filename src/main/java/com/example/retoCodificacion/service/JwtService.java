@@ -1,15 +1,19 @@
 package com.example.retoCodificacion.service;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Service
 public interface JwtService {
+    // Verificar si el token es válido
     boolean isTokenValid(String token, UserDetails userDetails);
-    String extractUsername(String token);
-    String generateToken(Map<String, Object> extraClaims, String username);
 
+    // Extraer el nombre de usuario del token
+    String extractUsername(String token);
+
+    // Generar un access token
+    String generateAccessToken(Map<String, Object> extraClaims, String username);
+
+    // Generar un refresh token
+    String generateRefreshToken(String username);
 }
