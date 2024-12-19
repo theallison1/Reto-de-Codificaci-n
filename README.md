@@ -12,7 +12,7 @@ bash
 Copiar código
 curl -X POST http://localhost:8080/auth/v1/login \
 -H "Content-Type: application/json" \
--d '{"username": "admin", "password": "admin123"}'
+-d '{"username": "admin", "password": "admin"}'
 Desglose de la solicitud:
 
 -X POST: Indica que estamos realizando una solicitud POST.
