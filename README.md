@@ -18,7 +18,7 @@ Desglose de la solicitud:
 -X POST: Indica que estamos realizando una solicitud POST.
 http://localhost:8080/auth/v1/login: Es la URL del endpoint donde se realiza la autenticación.
 -H "Content-Type: application/json": Define el tipo de contenido de la solicitud, en este caso, application/json para enviar datos en formato JSON.
--d '{"username": "admin", "password": "admin123"}': Los datos en formato JSON que contienen las credenciales del usuario "admin".
+-d '{"username": "admin", "password": "admin"}': Los datos en formato JSON que contienen las credenciales del usuario "admin".
 Respuesta esperada (si el login es exitoso):
 
 json
